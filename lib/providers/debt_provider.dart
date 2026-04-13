@@ -59,3 +59,8 @@ class DebtProvider extends ChangeNotifier {
   Future<void> edit(Debt d)   async { await DbHelper.i.update(d); await load(); }
   Future<void> remove(int id) async { await DbHelper.i.delete(id); await load(); }
 }
+double getRemainingAmount(int debtId, double totalAmount) {
+  final payments = _payments.where((p) => p.debtId == debtId);
+  double paid = payments.fold(0, (sum, item) => sum + item.amount);
+  return totalAmount - paid;
+}
