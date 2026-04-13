@@ -4,8 +4,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class PinService {
   static const _kEnabled = 'pin_enabled';
-  static const _kHash    = 'pin_hash';
-  static const _salt     = 'dtp_v1_salt';
+  static const _kHash = 'pin_hash';
+  static const _salt = 'dtp_v1_salt';
 
   static String _hash(String pin) =>
       sha256.convert(utf8.encode('$_salt$pin')).toString();
@@ -19,7 +19,8 @@ class PinService {
     await p.setBool(_kEnabled, true);
   }
 
-  static Future<void> disable() async {
+  // ✅ MÉTHODE AJOUTÉE POUR CORRIGER L’ERREUR
+  static Future<void> disablePin() async {
     final p = await SharedPreferences.getInstance();
     await p.setBool(_kEnabled, false);
     await p.remove(_kHash);
