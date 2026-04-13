@@ -47,3 +47,12 @@ class DbHelper {
     };
   }
 }
+await db.execute('''
+CREATE TABLE payments(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  debt_id INTEGER,
+  amount REAL,
+  date TEXT,
+  note TEXT
+)
+''');
