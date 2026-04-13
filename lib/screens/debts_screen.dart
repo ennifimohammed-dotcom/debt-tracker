@@ -158,3 +158,12 @@ Widget _chip(String label, String val, String cur,
     ),
   );
 }
+TextField(
+  decoration: InputDecoration(
+    hintText: 'بحث...',
+    prefixIcon: Icon(Icons.search),
+  ),
+  onChanged: (value) {
+    provider.search(value);
+  },
+)
