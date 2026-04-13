@@ -152,3 +152,8 @@ class DebtCard extends StatelessWidget {
     );
   }
 }
+Color getStatusColor(double remaining) {
+  if (remaining == 0) return Colors.green;
+  if (remaining < 0) return Colors.red;
+  return Colors.orange;
+}
