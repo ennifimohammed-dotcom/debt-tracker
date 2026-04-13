@@ -267,10 +267,3 @@ Widget _r(String l, String v) => Row(
     Text(l, style: TextStyle(color: Colors.white.withOpacity(0.72), fontSize: 12)),
   ],
 );
-double totalYouOwe = debts
-  .where((d) => d.type == 'debit')
-  .fold(0, (sum, d) => sum + d.amount);
-
-double totalYouGet = debts
-  .where((d) => d.type == 'credit')
-  .fold(0, (sum, d) => sum + d.amount);
